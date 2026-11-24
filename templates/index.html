@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregador de Licitações - Multi-Fontes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px;">
+            <div>
+                <h1 style="margin-bottom: 5px;">Agregador de Licitações</h1>
+                <p class="subtitulo" style="margin-bottom: 0;">Ferramenta gratuita e sem fins lucrativos para iniciantes no mercado de licitações.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <a href="{{ url_for('guia') }}" class="btn" style="background: #27ae60; font-size: 13px;">Guia do Iniciante</a>
+                <a href="{{ url_for('ajuda') }}" class="btn" style="background: #2980b9; font-size: 13px;">Como usar</a>
+            </div>
+        </div>
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% if mensagens %}
+                {% for categoria, msg in mensagens %}
+                    <div class="flash {{ categoria }}">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="GET" class="form-filtros">
+            <div class="filtro-linha">
+                <input type="text" name="termo" placeholder="Palavra-chave no objeto..." value="{{ filtros.termo }}" class="input-largo">
+                <select name="categoria">
+                    <option value="">Todas as Categorias</option>
+                    <option value="aquisicao" {% if filtros.categoria == 'aquisicao' %}selected{% endif %}>Aquisição / Compra</option>
+                    <option value="servico" {% if filtros.categoria == 'servico' %}selected{% endif %}>Prestação de Serviço</option>
+                    <option value="credenciamento" {% if filtros.categoria == 'credenciamento' %}selected{% endif %}>Credenciamento</option>
+                    <option value="obras" {% if filtros.categoria == 'obras' %}selected{% endif %}>Obras e Engenharia</option>
+                </select>
+                
+                <label style="display: flex; align-items: center; gap: 5px; font-size: 13px; color: #27ae60; font-weight: bold; cursor: pointer; white-space: nowrap;">
+                    <input type="checkbox" name="me_epp" {% if filtros.me_epp == 'on' %}checked{% endif %}>
+                    Apenas ME/EPP
+                </label>
+            </div>
+
+            <div class="filtro-linha">
+                <select name="modalidade">
+                    <option value="">Todas as Modalidades</option>
+                    <option value="6" {% if filtros.modalidade == '6' %}selected{% endif %}>Pregão Eletrônico</option>
+                    <option value="8" {% if filtros.modalidade == '8' %}selected{% endif %}>Dispensa Eletrônica</option>
+                    <option value="4" {% if filtros.modalidade == '4' %}selected{% endif %}>Concorrência Eletrônica</option>
+                </select>
+
+                <select name="uf" id="uf-select">
+                    <option value="">Estado</option>
+                    <option value="AC" {% if filtros.uf == 'AC' %}selected{% endif %}>Acre</option>
+                    <option value="AL" {% if filtros.uf == 'AL' %}selected{% endif %}>Alagoas</option>
+                    <option value="AP" {% if filtros.uf == 'AP' %}selected{% endif %}>Amapá</option>
+                    <option value="AM" {% if filtros.uf == 'AM' %}selected{% endif %}>Amazonas</option>
+                    <option value="BA" {% if filtros.uf == 'BA' %}selected{% endif %}>Bahia</option>
+                    <option value="CE" {% if filtros.uf == 'CE' %}selected{% endif %}>Ceará</option>
+                    <option value="DF" {% if filtros.uf == 'DF' %}selected{% endif %}>Distrito Federal</option>
+                    <option value="ES" {% if filtros.uf == 'ES' %}selected{% endif %}>Espírito Santo</option>
+                    <option value="GO" {% if filtros.uf == 'GO' %}selected{% endif %}>Goiás</option>
+                    <option value="MA" {% if filtros.uf == 'MA' %}selected{% endif %}>Maranhão</option>
+                    <option value="MT" {% if filtros.uf == 'MT' %}selected{% endif %}>Mato Grosso</option>
+                    <option value="MS" {% if filtros.uf == 'MS' %}selected{% endif %}>Mato Grosso do Sul</option>
+                    <option value="MG" {% if filtros.uf == 'MG' %}selected{% endif %}>Minas Gerais</option>
+                    <option value="PA" {% if filtros.uf == 'PA' %}selected{% endif %}>Pará</option>
+                    <option value="PB" {% if filtros.uf == 'PB' %}selected{% endif %}>Paraíba</option>
+                    <option value="PR" {% if filtros.uf == 'PR' %}selected{% endif %}>Paraná</option>
+                    <option value="PE" {% if filtros.uf == 'PE' %}selected{% endif %}>Pernambuco</option>
+                    <option value="PI" {% if filtros.uf == 'PI' %}selected{% endif %}>Piauí</option>
+                    <option value="RJ" {% if filtros.uf == 'RJ' %}selected{% endif %}>Rio de Janeiro</option>
+                    <option value="RN" {% if filtros.uf == 'RN' %}selected{% endif %}>Rio Grande do Norte</option>
+                    <option value="RS" {% if filtros.uf == 'RS' %}selected{% endif %}>Rio Grande do Sul</option>
+                    <option value="RO" {% if filtros.uf == 'RO' %}selected{% endif %}>Rondônia</option>
+                    <option value="RR" {% if filtros.uf == 'RR' %}selected{% endif %}>Roraima</option>
+                    <option value="SC" {% if filtros.uf == 'SC' %}selected{% endif %}>Santa Catarina</option>
+                    <option value="SP" {% if filtros.uf == 'SP' %}selected{% endif %}>São Paulo</option>
+                    <option value="SE" {% if filtros.uf == 'SE' %}selected{% endif %}>Sergipe</option>
+                    <option value="TO" {% if filtros.uf == 'TO' %}selected{% endif %}>Tocantins</option>
+                </select>
+
+                <select name="municipio" id="municipio-select" {% if not filtros.uf %}disabled{% endif %}>
+                    <option value="">Município</option>
+                    {% if filtros.municipio %}
+                        <option value="{{ filtros.municipio }}" selected>{{ filtros.municipio }}</option>
+                    {% endif %}
+                </select>
+            </div>
+
+            <div class="filtro-linha">
+                <input type="number" name="valor_min" placeholder="Valor Mínimo (R$)" value="{{ filtros.valor_min }}" step="0.01">
+                <input type="number" name="valor_max" placeholder="Valor Máximo (R$)" value="{{ filtros.valor_max }}" step="0.01">
+                <input type="hidden" name="buscar" value="1">
+                <div class="filtro-acoes">
+                    <button type="submit" class="btn">Filtrar</button>
+                    <a href="/" class="btn btn-secundario">Limpar</a>
+                </div>
+            </div>
+        </form>
+
+        <h2>
+            Licitações Encontradas
+            {% if tem_filtro %}
+                <span style="font-size: 16px; font-weight: normal; color: #64748b; margin-left: 10px;">
+                    ({{ licitacoes|length }} resultado(s) encontrado(s))
+                </span>
+            {% endif %}
+        </h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Órgão / Local</th>
+                    <th>Objeto da Licitação</th>
+                    <th>Valor Estimado</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for licitacao in licitacoes %}
+                    <tr>
+                        <td>
+                            <b>{{ licitacao.orgao }}</b><br>
+                            <small>{{ licitacao.municipio }} - {{ licitacao.uf }}</small>
+                        </td>
+                        <td>
+                            {% if filtros.termo %}
+                                {% set texto_destacado = licitacao.objeto | replace(filtros.termo, "<strong>" ~ filtros.termo ~ "</strong>") %}
+                                {{ texto_destacado | safe }}
+                            {% else %}
+                                {{ licitacao.objeto }}
+                            {% endif %}
+                        </td>
+                        <td style="white-space: nowrap;">{{ licitacao.valor }}</td>
+                        <td style="text-align: center; vertical-align: middle; width: 130px;">
+                            <a href="{{ licitacao.link_edital }}" target="_blank" class="btn-tabela" style="margin-bottom: 5px; display: block; background: #2980b9;">Ver no PNCP</a>
+                            <a href="{{ licitacao.link_google }}" target="_blank" class="btn-tabela" style="background: #e67e22; display: block; font-size: 11px;">Buscar no Google</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="vazio">
+                            {% if tem_filtro %}
+                                Nenhuma licitação encontrada com esses filtros.
+                            {% else %}
+                                Clique em "Filtrar" sem preencher nada para ver as licitações mais recentes.
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- NOVO BLOCO ADICIONADO AQUI -->
+        <div style="background: #eef2f7; padding: 20px; border-radius: 6px; margin-top: 30px; text-align: center;">
+            <h3 style="color: #2c3e50; margin-top: 0;">Ainda tem dúvidas sobre os conceitos de licitação?</h3>
+            <p style="color: #475569; margin-bottom: 15px;">Não sabe o que é UASG, Pregão ou Homologação? Acesse nosso guia básico.</p>
+            <a href="{{ url_for('guia') }}" class="btn" style="background: #27ae60; font-size: 15px;">Acessar o Guia do Iniciante</a>
+        </div>
+        <!-- FIM DO BLOCO -->
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ufSelect = document.getElementById('uf-select');
+            const municipioSelect = document.getElementById('municipio-select');
+            const municipioAtual = "{{ filtros.municipio }}";
+
+            function carregarMunicipios(uf) {
+                if (!uf) {
+                    municipioSelect.innerHTML = '<option value="">Município</option>';
+                    municipioSelect.disabled = true;
+                    return;
+                }
+                municipioSelect.innerHTML = '<option value="">Carregando...</option>';
+                municipioSelect.disabled = false;
+                fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`)
+                    .then(response => response.json())
+                    .then(data => {
+                        municipioSelect.innerHTML = '<option value="">Todos os Municípios</option>';
+                        data.sort((a, b) => a.nome.localeCompare(b.nome));
+                        data.forEach(municipio => {
+                            const option = document.createElement('option');
+                            option.value = municipio.nome;
+                            option.textContent = municipio.nome;
+                            if (municipio.nome === municipioAtual) {
+                                option.selected = true;
+                            }
+                            municipioSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        municipioSelect.innerHTML = '<option value="">Erro ao carregar</option>';
+                    });
+            }
+
+            ufSelect.addEventListener('change', function() {
+                if (this.value === "") {
+                    municipioSelect.disabled = true;
+                }
+                carregarMunicipios(this.value);
+            });
+
+            if (ufSelect.value) {
+                carregarMunicipios(ufSelect.value);
+            }
+        });
+    </script>
+</body>
+</html>

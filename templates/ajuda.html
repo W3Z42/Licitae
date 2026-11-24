@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Uso - Agregador de Licitações</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a href="{{ url_for('index') }}" class="btn btn-secundario" style="font-size: 14px;">← Voltar para a Busca</a>
+            <a href="{{ url_for('guia') }}" class="btn" style="background: #27ae60; font-size: 13px;">Acessar o Guia do Iniciante</a>
+        </div>
+
+        <h1>Manual de Uso da Ferramenta</h1>
+        <p class="subtitulo">Guia completo para extrair o máximo do Agregador de Licitações e garantir o acesso aos editais oficiais.</p>
+
+        <div style="background: #fff; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; line-height: 1.6; color: #334155;">
+            
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px; margin-top: 0;">1. Como Realizar a Busca</h2>
+            <p>Na tela principal, você encontrará três linhas de filtros. Você pode usar apenas um ou combiná-los para refinar sua pesquisa:</p>
+            <ul>
+                <li><strong>Palavra-chave:</strong> Onde você digita o produto ou serviço desejado (ex: "papel", "cadeira", "limpeza"). O sistema também entende sinônimos, então buscar por "computador" pode trazer resultados de "notebook".</li>
+                <li><strong>Categoria:</strong> Uma forma mais ampla de buscar. Em vez de digitar "cadeira", você pode selecionar "Aquisição / Compra" para ver tudo o que o governo está comprando.</li>
+                <li><strong>Apenas ME/EPP:</strong> Se sua empresa é uma Microempresa ou Empresa de Pequeno Porte, marque esta caixa. O sistema vai filtrar os editais que possuem benefícios exclusivos para esse porte.</li>
+                <li><strong>Modalidade:</strong> O "Pregão Eletrônico" é o mais comum e onde a disputa é mais acessível para iniciantes.</li>
+                <li><strong>Estado (UF) e Município:</strong> Selecione o estado e, automaticamente, o campo de município será liberado. Você pode buscar na sua cidade ou em todo o estado.</li>
+                <li><strong>Valor Mínimo e Máximo:</strong> Use esses campos para não perder tempo com licitações muito pequenas ou grandes demais para o seu negócio.</li>
+            </ul>
+            <p><em>Dica de Iniciante:</em> Se você não preencher nenhum filtro e apenas clicar em "Filtrar", o sistema trará as licitações mais recentes de todo o Brasil nos últimos 30 dias.</p>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">2. Entendendo a Tabela de Resultados</h2>
+            <p>Cada linha da tabela representa uma licitação. As colunas mostram:</p>
+            <ul>
+                <li><strong>Órgão / Local:</strong> Quem está comprando e a cidade/estado de onde o edital é.</li>
+                <li><strong>Objeto da Licitação:</strong> O resumo do que o governo quer comprar. A palavra que você buscou será destacada em negrito.</li>
+                <li><strong>Valor Estimado:</strong> O quanto o governo prevê gastar. Se estiver "Sigiloso / Não informado", o órgão optou por não divulgar o valor previamente (o que é permitido por lei).</li>
+            </ul>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">3. Acessando o Edital (Botões de Ação)</h2>
+            <p>A parte mais importante da ferramenta: como chegar até o documento oficial. O sistema oferece duas rotas para garantir que você nunca fique sem acesso:</p>
+            
+            <div style="background: #f8fafc; border-left: 4px solid #2980b9; padding: 15px; margin-bottom: 15px;">
+                <strong style="color: #2980b9;">Opção Principal: Botão Azul ("Ver no PNCP")</strong>
+                <p style="margin-bottom: 0;">Este é o caminho oficial. Ele abre o link exato do edital no Portal Nacional de Contratações Públicas (PNCP), a fonte oficial do governo. Lá você lerá o objeto completo e baixará o arquivo PDF.</p>
+            </div>
+
+            <div style="background: #f8fafc; border-left: 4px solid #e67e22; padding: 15px;">
+                <strong style="color: #e67e22;">Acesso Alternativo: Botão Laranja ("Buscar no Google")</strong>
+                <p style="margin-bottom: 0;">Os portais do governo às vezes ficam lentos ou fora do ar. Se o botão azul der erro, clique no botão laranja. Ele fará uma busca inteligente na internet (com o número do edital e o nome do órgão) para tentar encontrar o documento em PDF em outros sites (como portais de transparência).</p>
+            </div>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">4. O QR Code na Página do PNCP</h2>
+            <p>Quando você clicar no botão azul e abrir a página do edital no PNCP, repare que no canto superior direito da tela (geralmente ao lado do título do edital) existe um <strong>QR Code</strong>.</p>
+            <p><strong>Para que serve?</strong> Ele permite que você abra o edital no seu celular. Basta abrir a câmera do seu telefone e apontar para o código na tela do computador. É útil para mostrar o edital para um sócio ou funcionário durante uma reunião, ou até para consultar no galpão da empresa.</p>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">5. Dicas e Limitações</h2>
+            <ul>
+                <li><strong>Busca por Resumo:</strong> A ferramenta pesquisa no resumo do objeto do edital. Se não encontrar o que procura, tente usar palavras mais genéricas (ex: "mobiliário" em vez de "cadeira").</li>
+                <li><strong>Sistema de Alertas:</strong> Utilize a área de alertas para cadastrar palavras-chave que você vende constantemente. O sistema guardará essas palavras para facilitar futuras buscas.</li>
+                <li><strong>Instabilidade Governamental:</strong> Como a ferramenta consome dados em tempo real do governo, a velocidade da busca pode variar dependendo do humor dos servidores do PNCP.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

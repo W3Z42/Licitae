@@ -1,0 +1,172 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+h1 { color: #2c3e50; margin-top: 0; }
+h2 { color: #2c3e50; font-size: 18px; }
+.subtitulo { color: #64748b; font-size: 14px; margin-bottom: 20px; }
+
+/* Estilo principal dos botões */
+.btn {
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+}
+.btn:hover { background: #219653; }
+.btn-secundario { background: #95a5a6; }
+.btn-secundario:hover { background: #7f8c8d; }
+
+/* ESTILO NOVO PARA O BOTÃO DENTRO DA TABELA */
+.btn-tabela {
+    background: #2980b9;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+}
+.btn-tabela:hover { background: #1c5980; }
+
+/* --- NOVO LAYOUT DOS FILTROS --- */
+.form-filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.filtro-linha {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filtro-linha input, 
+.filtro-linha select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ESTILO PARA CAMPO DESATIVADO */
+.filtro-linha select:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Faz o campo de texto principal e as caixas crescerem uniformemente */
+.input-largo { flex: 2; min-width: 200px; }
+.filtro-linha input[type="text"], 
+.filtro-linha input[type="number"],
+.filtro-linha select { flex: 1; min-width: 140px; }
+
+.filtro-acoes {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; 
+}
+
+.alerta-box {
+    background: #eef2f7;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.form-alerta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.lista-alertas {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.alerta-item {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-excluir {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0;
+    line-height: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th { background: #2c3e50; color: #fff; }
+
+.vazio {
+    color: #64748b;
+    text-align: center;
+}
+
+.flash {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.flash.sucesso { background: #d4edda; color: #155724; }
+.flash.erro { background: #f8d7da; color: #721c24; }
+
+mark { background-color: transparent; color: inherit; font-weight: bold; }

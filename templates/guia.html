@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia do Iniciante - Agregador de Licitações</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a href="{{ url_for('index') }}" class="btn btn-secundario" style="font-size: 14px;">← Voltar para a Busca</a>
+            <a href="{{ url_for('ajuda') }}" class="btn" style="background: #2980b9; font-size: 13px;">Como usar a ferramenta</a>
+        </div>
+
+        <h1>Guia do Iniciante em Licitações</h1>
+        <p class="subtitulo">Informações práticas e verificadas para você começar a vender para o governo sem cometer erros.</p>
+
+        <div style="background: #fff; padding: 30px; border-radius: 8px; border: 1px solid #e2e8f0; line-height: 1.6; color: #334155;">
+            
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px; margin-top: 0;">1. O Básico: O que é Licitação e por que Participar?</h2>
+            <p>Licitação é o processo pelo qual o governo escolhe seus fornecedores. A lei (<a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm" target="_blank" style="color: #2980b9;">Lei nº 14.133/2021</a>) exige concorrência pública e igualdade entre os participantes.</p>
+            <p><strong>Por que vale a pena?</strong> O governo é um comprador grande e que paga em dia. Além disso, a lei garante <strong>benefícios exclusivos para ME, EPP e MEI</strong>, como a possibilidade de participar de licitações exclusivas (conforme a <a href="https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp123.htm" target="_blank" style="color: #2980b9;">Lei Complementar nº 123/2006</a>).</p>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">2. Você está Pronto? Checklist de Documentos (e o que é atualizado automaticamente)</h2>
+            <p>Antes de procurar editais, sua empresa precisa estar com a documentação em ordem. Os editais quase sempre exigem:</p>
+            <ul>
+                <li><strong>CNPJ Ativo</strong> (situação cadastral regular na Receita Federal).</li>
+                <li><strong>Certidão Negativa de Débitos Federais</strong> (Receita Federal e PGFN).</li>
+                <li><strong>Certidão de Regularidade do FGTS</strong> (Caixa Econômica Federal).</li>
+                <li><strong>Certidão Negativa de Débitos Trabalhistas</strong> (Justiça do Trabalho).</li>
+                <li><strong>Conta no Gov.br</strong> (nível Prata ou Ouro) para acessar os sistemas de compras.</li>
+            </ul>
+            <p><strong>Notícia boa:</strong> Para o governo federal, muitos desses documentos são atualizados automaticamente via SICAF. Você não precisa anexar PDF de tudo toda vez. Mas é sua responsabilidade manter tudo regular. Se o edital for de prefeitura ou estado, confirme as regras locais [citation:2].</p>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">3. O Limite do MEI (Atenção para não se Dar Mal)</h2>
+            <p>O MEI pode participar de licitações, mas há um teto de faturamento anual de <strong>R$ 81.000,00</strong>. Se você ganhar um contrato muito grande e ultrapassar esse limite, precisará mudar de categoria (para ME) para continuar operando legalmente [citation:11].</p>
+            <p>Por isso, a recomendação prática é: <strong>comece com contratos menores</strong>. Muitas licitações para MEI/ME/EPP são exclusivas para valores de até <strong>R$ 80.000,00</strong> (conforme o Decreto 8.538/2015) [citation:5]. São o seu terreno ideal para ganhar experiência sem risco de estourar o limite.</p>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">4. As Modalidades que mais Importam para Iniciantes</h2>
+            <ul>
+                <li><strong>Pregão Eletrônico:</strong> A mais comum. Funciona como um leilão inverso: o governo mostra o que quer e as empresas dão lances de desconto. Ganha quem oferecer o menor preço (para bens e serviços comuns). A sessão acontece em plataformas como Compras.gov.br [citation:3].</li>
+                <li><strong>Dispensa Eletrônica:</strong> Usada para compras de menor valor (até R$ 50.000,00, em regra). O processo é mais rápido e a concorrência costuma ser menor. É a porta de entrada mais recomendada pelo próprio governo para pequenos fornecedores [citation:15].</li>
+            </ul>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">5. O Passo a Passo de uma Licitação (O que Acontece na Prática)</h2>
+            <ol style="line-height: 1.8;">
+                <li><strong>Leia o Edital:</strong> Verifique o objeto, os prazos e a documentação. A leitura é chata, mas é essencial para não ser desclassificado.</li>
+                <li><strong>Cadastre sua Proposta:</strong> No sistema indicado (geralmente Compras.gov.br), você insere o preço e as especificações do produto. A proposta inicial serve para comparativo; divergências entre a proposta inicial e a final podem desclassificar você [citation:3].</li>
+                <li><strong>Participe da Disputa de Lances:</strong> No dia e hora marcados, você entra no sistema e dá lances para baixar o preço. O sistema avisa em tempo real qual é o menor lance.</li>
+                <li><strong>Habilitação:</strong> Se você vencer a disputa de preços, o governo analisa seus documentos. Se estiver tudo certo, você é declarado vencedor.</li>
+                <li><strong>Homologação e Contrato:</strong> O órgão confirma o resultado e assina o contrato.</li>
+            </ol>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">6. A Regra da Cota (O que nem todo mundo te conta)</h2>
+            <p>A lei garante benefícios, mas eles não são absolutos. Em um edital, pode haver itens exclusivos para ME/EPP e itens abertos para todos. O órgão pode, justificadamente, <strong>não aplicar a cota</strong> se ela for desvantajosa para a Administração (ex: quando a quantidade é tão pequena que dividir não faz sentido, ou quando a padronização dos equipamentos é essencial) [citation:1].</p>
+            <p>Isso significa que: <strong>nem todo item de um edital é exclusivo para você</strong>. Leia com atenção quais itens são reservados. Se você tentar participar de um item que não é exclusivo, concorrerá com empresas grandes.</p>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">7. Glossário Essencial</h2>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li style="margin-bottom: 10px;"><strong>Edital:</strong> O documento que rege a licitação. Contém todas as regras.</li>
+                <li style="margin-bottom: 10px;"><strong>UASG:</strong> Código que identifica o setor do órgão que está comprando (ex: 550005).</li>
+                <li style="margin-bottom: 10px;"><strong>Proposta:</strong> Sua oferta de preço e condições.</li>
+                <li style="margin-bottom: 10px;"><strong>Lance:</strong> Oferta de preço menor durante a disputa.</li>
+                <li style="margin-bottom: 10px;"><strong>Homologação:</strong> O "aceite final" do governo, que confirma o vencedor.</li>
+                <li style="margin-bottom: 10px;"><strong>Termo de Referência (TR):</strong> Documento que detalha tecnicamente o que o governo quer comprar.</li>
+            </ul>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">8. Dicas para Não Perder Dinheiro</h2>
+            <div style="background: #f8fafc; border-left: 4px solid #e74c3c; padding: 15px; border-radius: 4px;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li><strong>Cuidado com o preço:</strong> Não dê um lance que não cubra seus custos. Você é obrigado a entregar pelo preço que ofertou. Se não conseguir, pode ser penalizado.</li>
+                    <li><strong>Leia as exigências técnicas:</strong> Se o edital pede um produto com determinada especificação, não ofereça outro. Isso é motivo de desclassificação.</li>
+                    <li><strong>Fique de olho nos prazos:</strong> Perder a data de envio da proposta ou da sessão de lances significa perder a oportunidade.</li>
+                    <li><strong>Use o aplicativo do Compras.gov.br:</strong> O app oficial permite cadastrar propostas e dar lances pelo celular, o que facilita muito a vida de quem está começando e não tem um computador sempre à mão [citation:6].</li>
+                </ul>
+            </div>
+
+            <h2 style="color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-top: 20px; padding-bottom: 5px;">9. Onde Aprender Mais (Fontes Oficiais e Gratuitas)</h2>
+            <ul>
+                <li><strong>Sebrae:</strong> <a href="https://sebrae.com.br/sites/PortalSebrae/sebraeaz/venda-para-o-governo,daa8ac41b8263510VgnVCM1000004c00210aRCRD" target="_blank" style="color: #2980b9;">Guia de Vendas para o Governo</a> e cursos gratuitos.</li>
+                <li><strong>ENAP (Escola Virtual):</strong> <a href="https://www.escolavirtual.gov.br/" target="_blank" style="color: #2980b9;">Cursos gratuitos</a> sobre licitações e contratos.</li>
+                <li><strong>Compras.gov.br:</strong> <a href="https://www.gov.br/compras/pt-br" target="_blank" style="color: #2980b9;">Portal oficial de compras do governo federal</a>.</li>
+                <li><strong>PNCP:</strong> <a href="https://www.gov.br/pncp/pt-br" target="_blank" style="color: #2980b9;">Portal Nacional de Contratações Públicas</a>.</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; font-size: 13px; color: #94a3b8;">
+            <p>Projeto de Extensão (PEX V) - Desenvolvido para auxiliar pequenos empreendedores.</p>
+        </div>
+    </div>
+</body>
+</html>
